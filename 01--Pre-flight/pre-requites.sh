@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # ==============================================================
-# Harbor on Ubuntu 20.04
 # Edit your /etc/hosts file to resolve IP and FQDN. 
 # Pre-requisite steps: disable swap
 #                      disable firewall (demo only)
@@ -11,8 +10,11 @@
 #                      curl 
 #                      gnupg-agent 
 #                      software-properties-common
-# Install Docker. 
-# Install Harbor with Chartmuseum. Comment out HTTPS section.
+# Install Docker
+# Install Docker Compose 
+# Install Harbor with Chartmuseum: 
+#                      change port: 8000
+#                      Comment out HTTPS section.
 # Install k3s - Rancher
 # 24/04/2022
 # ==============================================================
