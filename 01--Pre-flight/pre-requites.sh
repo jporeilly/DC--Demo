@@ -12,12 +12,12 @@
 #                      gnupg-agent 
 #                      software-properties-common
 # Install Docker. 
-# Install Docker Compose
 # Install Harbor with Chartmuseum. Comment out HTTPS section.
-# 02/04/2022
+# Install k3s - Rancher
+# 24/04/2022
 # ==============================================================
 
-#Prompt for the user to ask if the install should use the IP Address or Fully Qualified Domain Name of the Harbor Server
+# Prompt for the user to ask if the install should use the IP Address or Fully Qualified Domain Name of the Harbor Server
 PS3='Would you like to install Harbor based on IP or FQDN? '
 select option in IP FQDN
 do
@@ -36,9 +36,9 @@ apt update -y
 swapoff --all
 sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
 ufw disable # Do not disable in Production.
-echo "Infrastructure update completed .."
+echo -e "Infrastructure update completed .."
 
-#Install Latest Stable Docker Release
+# Install Latest Stable Docker Release
 apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
@@ -61,16 +61,9 @@ MAINUSER=$(logname)
 usermod -aG docker $MAINUSER
 systemctl daemon-reload
 systemctl restart docker
-echo "Docker Installation complete"
+echo -e "Docker Installation complete .."
 
-#Install Latest Stable Docker Compose Release
-COMPOSEVERSION=$(curl -s https://github.com/docker/compose/releases/latest/download 2>&1 | grep -Po [0-9]+\.[0-9]+\.[0-9]+)
-curl -L "https://github.com/docker/compose/releases/download/v$COMPOSEVERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-echo "Docker Compose Installation completed .."
-
-#Install Latest Stable Harbor Release
+# Install Latest Stable Harbor Release
 HARBORVERSION=$(curl -s https://github.com/goharbor/harbor/releases/latest/download 2>&1 | grep -Po [0-9]+\.[0-9]+\.[0-9]+)
 curl -s https://api.github.com/repos/goharbor/harbor/releases/latest | grep browser_download_url | grep online | cut -d '"' -f 4 | wget -qi -
 tar xvf harbor-online-installer-v$HARBORVERSION.tgz
@@ -86,4 +79,17 @@ sed -e '/\/your\/private\/key\/path$/ s/^#*/#/' -i harbor.yml
 
 mkdir /var/log/harbor
 ./install.sh --with-chartmuseum
+newgrp docker
 echo -e "Harbor Installation Completed .. \n\nPlease log out and log in or run the command 'newgrp docker' to use Docker without sudo\n\nLogin to your harbor instance:\n docker login -u admin -p Harbor12345 $IPorFQDN"
+
+# Install k3s - Rancher
+curl -sfL https://get.k3s.io | sh -
+
+
+# Connect and test kubectl
+cd
+mkdir .kube
+cp /etc/rancher/k3s/k3s.yaml  ~/.kube/config
+chown -R ldc ~/.kube
+kubectl get pods -A
+echo -e "k3s Installation Completed .."

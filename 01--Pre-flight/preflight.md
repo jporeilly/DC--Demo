@@ -1,19 +1,20 @@
-## <font color='red'>Preflight - Hardware & Utils</font>  
+## <font color='red'>LDC 7.0 Preflight - Hardware & Utils</font>  
 
-The following pre-requisites configure the Pentaho Server and Data Integration 9.3.
+The following pre-requisites configure the Data Catalog 7.0.
 
-Prerequisites for the Pentaho Server 9.3 machine:
+Prerequisites for the LDC 7.0 machine:
 * Docker 
-* Docker Compose
 * Harbor
+
+* k3s - Rancher
 
 <font color='teal'>This section is for reference only. These tasks have already been completed.</font>
 
 ---
 
-<em>Install Docker, Docker-Compose & Harbor</em>  
+<em>Install Docker & Harbor</em>  
 
-The following script prepares an Ubuntu 20.04 machine for Containers - including Harbor and Chartmuseum.  
+The following script prepares an Ubuntu 20.04 machine for LDC 7.0 - including Harbor and Chartmuseum.  
 This script installs Harbor with an HTTP connection, Clair, and the Chart Repository Service. It does not install Notary, which requires HTTPS.  
 
 ``run the script:``
@@ -31,7 +32,7 @@ This is the address at which you access the Harbor interface and the registry se
 
 When the script reports Harbor Installation Complete, log in to your new Harbor instance.
 
-  > browse to: http://pentaho.skytap.example
+  > browse to: http://ldc.skytap.example
 
 User name: admin  
 Password: Harbor12345  
@@ -87,11 +88,11 @@ docker run busybox echo "hello from busybox"
 ```
 ``tag the image:``
 ```
-docker tag busybox:latest pentaho.skytap.example/busybox:latest
+docker tag busybox:latest ldc.skytap.example/busybox:latest
 ```
 ``push to harbor:``
 ```
-docker push pentaho.skytap.example/busybox/busybox:latest
+docker push ldc.skytap.example/busybox/busybox:latest
 ```
 * Log back into Harbor -> Projects -> Busybox .. 
 
@@ -99,13 +100,13 @@ Let's now see if the image can be pulled.
 
 ``remove busybox/busybox:latest container:``
 ```
-docker image rm pentaho.skytap.example/busybox/busybox:latest
+docker image rm ldc.skytap.example/busybox/busybox:latest
 ```
 or
 use the Harbor UI..
 ``pull image from Harbor:``
 ```
-docker pull pentaho.skytap.example/busybox/busybox
+docker pull ldc.skytap.example/busybox/busybox
 ```
 Note: it will pull the latest image.
 
