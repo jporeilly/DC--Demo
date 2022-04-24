@@ -63,6 +63,13 @@ systemctl daemon-reload
 systemctl restart docker
 echo -e "Docker Installation complete .."
 
+# Install Latest Stable Docker Compose Release
+COMPOSEVERSION=$(curl -s https://github.com/docker/compose/releases/latest/download 2>&1 | grep -Po [0-9]+\.[0-9]+\.[0-9]+)
+curl -L "https://github.com/docker/compose/releases/download/v$COMPOSEVERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+echo "Docker Compose Installation completed .."
+
 # Install Latest Stable Harbor Release
 HARBORVERSION=$(curl -s https://github.com/goharbor/harbor/releases/latest/download 2>&1 | grep -Po [0-9]+\.[0-9]+\.[0-9]+)
 curl -s https://api.github.com/repos/goharbor/harbor/releases/latest | grep browser_download_url | grep online | cut -d '"' -f 4 | wget -qi -
@@ -87,9 +94,8 @@ curl -sfL https://get.k3s.io | sh -
 
 
 # Connect and test kubectl
-cd
-mkdir .kube
-cp /etc/rancher/k3s/k3s.yaml  ~/.kube/config
-chown -R ldc ~/.kube
+cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+chown $USER:$GROUP ~/.kube/config
+systemctl enable k3s
 kubectl get pods -A
 echo -e "k3s Installation Completed .."
