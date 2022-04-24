@@ -79,6 +79,7 @@ cd harbor
 cp harbor.yml.tmpl harbor.yml
 # comment out https
 sed -i "s/reg.mydomain.com/$IPorFQDN/g" harbor.yml
+sed -i "s/^[#]*\s*port=.*/port=8000/" harbor.yml
 sed -e '/port: 443$/ s/^#*/#/' -i harbor.yml
 sed -e '/https:$/ s/^#*/#/' -i harbor.yml
 sed -e '/\/your\/certificate\/path$/ s/^#*/#/' -i harbor.yml
@@ -94,8 +95,11 @@ curl -sfL https://get.k3s.io | sh -
 
 
 # Connect and test kubectl
+chown -R pentaho /etc/rancher/k3s/k3s.yaml
 cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
 chown $USER:$GROUP ~/.kube/config
 systemctl enable k3s
 kubectl get pods -A
 echo -e "k3s Installation Completed .."
+echo -e "Reboot required .."
+reboot
