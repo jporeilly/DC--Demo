@@ -8,7 +8,7 @@
 # ==============================================================
 
 # Install k3s - Rancher
-curl -sfL https://get.k3s.io | sh -
+curl -sfL https://get.k3s.io | sh - --disable servicelb --disable traefik
 
 # Connect and test kubectl
 chown -R pentaho /etc/rancher/k3s/k3s.yaml
