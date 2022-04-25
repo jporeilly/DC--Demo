@@ -3,7 +3,8 @@
 The following pre-requisites configure the Data Catalog 7.0.
 
 Prerequisites for the LDC 7.0 machine:
-* Docker 
+* Docker
+* Docker Compose 
 * Harbor
 
 * k3s - Rancher
@@ -50,7 +51,7 @@ Once logged in, you should be able to create new projects, pull and push images 
 ``log in to Harbor with CLI:``
 ```
 cd harbor
-docker pentaho.skytap.example
+docker ldc.skytap.example
 Username: admin
 Password: Harbor12345
 ```
