@@ -93,7 +93,6 @@ echo -e "Harbor Installation Completed .. \n\nPlease log out and log in or run t
 # Install k3s - Rancher
 curl -sfL https://get.k3s.io | sh -
 
-
 # Connect and test kubectl
 chown -R pentaho /etc/rancher/k3s/k3s.yaml
 cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
