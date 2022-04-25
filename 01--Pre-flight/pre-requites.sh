@@ -13,8 +13,7 @@
 # Install Docker
 # Install Docker Compose 
 # Install Harbor with Chartmuseum: 
-#                      change port: 8000
-#                      Comment out HTTPS section.
+#                     Comment out HTTPS section.
 # Install k3s - Rancher
 # 24/04/2022
 # ==============================================================
@@ -81,7 +80,6 @@ cd harbor
 cp harbor.yml.tmpl harbor.yml
 # comment out https
 sed -i "s/reg.mydomain.com/$IPorFQDN/g" harbor.yml
-sed -i "s/^[#]*\s*port=.*/port=8000/" harbor.yml
 sed -e '/port: 443$/ s/^#*/#/' -i harbor.yml
 sed -e '/https:$/ s/^#*/#/' -i harbor.yml
 sed -e '/\/your\/certificate\/path$/ s/^#*/#/' -i harbor.yml
