@@ -13,9 +13,11 @@ Prerequisites for the LDC 7.0 machine:
 
 ---
 
-<em>Install Docker & Harbor</em>  
+<em>Install Docker & Harbor</em>
 
-The following script prepares an Ubuntu 20.04 machine for LDC 7.0 - including Harbor and Chartmuseum.  
+harbor is a Regsitry that secures artifacts with policies and role-based access control, ensures images are scanned and free from vulnerabilities, and signs images as trusted.
+
+The following script prepares an Ubuntu 20.04 machine for LDC 7.0 - including Harbor and Chartmuseum - Helm.  
 This script installs Harbor with an HTTP connection, Clair, and the Chart Repository Service. It does not install Notary, which requires HTTPS.  
 
 ``run the script:``
@@ -69,46 +71,18 @@ Resolution:
 }
 ```
 
-``create a new project:``
-```
-in the UI create a project called 'busybox`
-```
-Switch back to Terminal.
+---
 
-``pull the image:``
-```
-docker pull busybox
-```
-``list the images:``
-```
-docker images
-```
-``hello world in container:``
-```
-docker run busybox echo "hello from busybox"
-```
-``tag the image:``
-```
-docker tag busybox:latest ldc.skytap.example/busybox:latest
-```
-``push to harbor:``
-```
-docker push ldc.skytap.example/busybox/busybox:latest
-```
-* Log back into Harbor -> Projects -> Busybox .. 
+<em>Install k3s - Rancher</em> 
 
-Let's now see if the image can be pulled.
+K3s is an official CNCF sandbox project that delivers a lightweight yet powerful certified Kubernetes distribution designed for production workloads across resource-restrained, remote locations or on IoT devices.
 
-``remove busybox/busybox:latest container:``
+``run the script:``
 ```
-docker image rm ldc.skytap.example/busybox/busybox:latest
+sudo ./install_k3s.sh
 ```
-or
-use the Harbor UI..
-``pull image from Harbor:``
-```
-docker pull ldc.skytap.example/busybox/busybox
-```
-Note: it will pull the latest image.
+
+
+
 
 ---
