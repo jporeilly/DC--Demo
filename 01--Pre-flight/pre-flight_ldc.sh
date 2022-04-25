@@ -4,12 +4,17 @@
 # Edit your /etc/hosts file to resolve IP and FQDN. 
 # Pre-requisite steps: disable swap
 #                      disable firewall (demo only)
+# Install packages:
+#                      Jq
+#                      Helm
+#
 # Pre-requistes steps for Docker: 
 #                      apt-transport-https
 #                      ca-certificates 
 #                      curl 
 #                      gnupg-agent 
 #                      software-properties-common
+#
 # Install Docker
 # Install Docker Compose 
 #
@@ -31,7 +36,7 @@ snap install helm --classic
 
 # Docker pre-requisites
 apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
-echo -e "Pre-requisites installation completed .."
+echo -e "Pre-requisite installations completed .."
 
 # Install Latest Stable Docker Release
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -57,12 +62,15 @@ systemctl daemon-reload
 systemctl restart docker
 echo -e "Docker Installation completed .."
 
-
-
 # Install Latest Stable Docker Compose Release
 COMPOSEVERSION=$(curl -s https://github.com/docker/compose/releases/latest/download 2>&1 | grep -Po [0-9]+\.[0-9]+\.[0-9]+)
 curl -L "https://github.com/docker/compose/releases/download/v$COMPOSEVERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 echo "Docker Compose Installation completed .."
+
+# Install Docker Registry
+mkdir -p ~/docker-registry
+cp /Downloads/docker-cpompose.yaml ~/docker-registry
+docker-compose up -d
 
