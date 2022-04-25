@@ -16,7 +16,8 @@
 #                      software-properties-common
 #
 # Install Docker
-# Install Docker Compose 
+# Install Docker Compose
+# Install Docker Registry 
 #
 # 24/04/2022
 # ==============================================================
@@ -73,4 +74,4 @@ echo "Docker Compose Installation completed .."
 mkdir -p ~/docker-registry
 cp /Downloads/docker-cpompose.yaml ~/docker-registry
 docker-compose up -d
-
+cho "Docker Registry Installation completed .."
