@@ -14,7 +14,6 @@
 # Install Docker Compose 
 # Install Harbor with Chartmuseum: 
 #                     Comment out HTTPS section.
-# Install k3s - Rancher
 # 24/04/2022
 # ==============================================================
 
@@ -87,18 +86,4 @@ sed -e '/\/your\/private\/key\/path$/ s/^#*/#/' -i harbor.yml
 
 mkdir /var/log/harbor
 ./install.sh --with-chartmuseum
-newgrp docker
 echo -e "Harbor Installation Completed .. \n\nPlease log out and log in or run the command 'newgrp docker' to use Docker without sudo\n\nLogin to your harbor instance:\n docker login -u admin -p Harbor12345 $IPorFQDN"
-
-# Install k3s - Rancher
-curl -sfL https://get.k3s.io | sh -
-
-# Connect and test kubectl
-chown -R pentaho /etc/rancher/k3s/k3s.yaml
-cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-chown $USER:$GROUP ~/.kube/config
-systemctl enable k3s
-kubectl get pods -A
-echo -e "k3s Installation Completed .."
-echo -e "Reboot required .."
-reboot
