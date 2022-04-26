@@ -1,7 +1,19 @@
-## <font color='red'>LDC 7.0 Preflight - Hardware & Utils</font>
+## <font color='red'>Installation of Data Catalog 7.0</font>
 
+To download the Data Catalog images and Charts, you will need to contact your Account Manager.  
+* The artifacts are not publicly available. 
+* To save time, the artifacts have already been downloaded.
 
+The local Docker Registry has frontend UI.
 
+  > navigate to: http://localhost:8080
+
+``login into the Registry:``
+```
+docker login localhost:5000
+Username: admin
+Password: admin   
+```
 
 ``upload images:``
 ```
