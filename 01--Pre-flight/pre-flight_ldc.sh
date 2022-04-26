@@ -72,6 +72,6 @@ echo "Docker Compose Installation completed .."
 
 # Install Docker Registry
 mkdir -p ~/docker-registry
-cp /Downloads/docker-cpompose.yaml ~/docker-registry
+cp /Downloads/docker-compose.yaml ~/docker-registry
 docker-compose up -d
 cho "Docker Registry Installation completed .."
