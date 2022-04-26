@@ -73,8 +73,9 @@ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 echo "Docker Compose Installation completed .."
 
 # Install Docker Registry
-mkdir -p ~/docker-registry
-cp /Downloads/docker-compose.yaml ~/docker-registry
+mkdir -p /data/docker-registry
+cp /Downloads/docker-compose.yaml /data/docker-registry
+cd /data/docker-registry
 docker-compose up -d
 echo "Docker Registry Installation completed .."
 

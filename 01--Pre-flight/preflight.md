@@ -41,6 +41,16 @@ Resolution:
 }
 ```
 
+* finally test that the Docker Regsitry is up and running
+
+  > navigate to: http://localhost:8080
+
+``login into the Registry:``
+```
+docker login localhost:5000
+Username: admin
+Password: admin   
+
 ---
 
 <em>Install k3s - Rancher</em> 
@@ -51,8 +61,5 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 ```
 sudo ./install_k3s.sh
 ```
-
-
-
 
 ---
