@@ -17,5 +17,7 @@ chown $USER:$GROUP ~/.kube/config
 systemctl enable k3s
 kubectl get pods -A
 echo -e "k3s Installation Completed .."
+
+sleep 3s
 echo -e "Reboot required .."
 reboot

@@ -78,6 +78,6 @@ cp /Downloads/docker-compose.yaml ~/docker-registry
 docker-compose up -d
 echo "Docker Registry Installation completed .."
 
-pause 3s
+sleep 3s
 echo "The server will now reboot .."
 reboot
