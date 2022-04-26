@@ -50,6 +50,7 @@ Resolution:
 docker login localhost:5000
 Username: admin
 Password: admin   
+```
 
 ---
 
