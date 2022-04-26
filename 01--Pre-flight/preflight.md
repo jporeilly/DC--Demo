@@ -61,6 +61,6 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 ```
 sudo ./install_k3s.sh
 ```
-Note: k3s is installed with Traefik disabled.
+Note: k3s is installed with Traefik disabled. Not required for single node.
 
 ---
