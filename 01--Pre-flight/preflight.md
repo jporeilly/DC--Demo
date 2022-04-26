@@ -1,8 +1,8 @@
-## <font color='red'>LDC 7.0 Preflight - Hardware & Utils</font>  
+## <font color='red'>Data Catalog 7.0 Preflight - Hardware & Utils</font>  
 
 The following pre-requisites configure the Data Catalog 7.0.
 
-Prerequisites for the LDC 7.0 machine:
+Prerequisites for the DC 7.0 server:
 * Docker
 * Docker Compose 
 * Harbor
@@ -15,12 +15,12 @@ Prerequisites for the LDC 7.0 machine:
 
 <em>Install Docker</em>
 
-The following script prepares an Ubuntu 20.04 machine for LDC 7.0.  
-This script installs Docker Registry with an HTTP connection.
+The following script prepares an Ubuntu 20.04 server for DC 7.0.  
+Docker Registry is installed with a HTTP connection.
 
 ``run the script:``
 ```
-sudo ./pre-flight_ldc.sh
+sudo ./pre-flight_dc.sh
 ```
 
 --- 
@@ -61,5 +61,6 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 ```
 sudo ./install_k3s.sh
 ```
+Note: k3s is installed with Traefik disabled.
 
 ---

@@ -28,8 +28,11 @@ apt upgrade -y
 swapoff --all
 sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
 ufw disable # Do not disable in Production.
-reboot
 echo -e "Infrastructure update completed .."
+
+sleep 3s
+echo -e "The server requires a reboot .."
+reboot
 
 # Install Jq
 apt-get install -y jq
@@ -80,5 +83,5 @@ docker-compose up -d
 echo "Docker Registry Installation completed .."
 
 sleep 3s
-echo "The server will now reboot .."
+echo "The server requires a reboot .."
 reboot
