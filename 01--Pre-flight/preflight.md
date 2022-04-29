@@ -145,23 +145,42 @@ kubectl delete persistentvolume postgres-pv-volume -n data-source
 
 PGAdmin is a web-based GUI tool used to interact with the Postgres database sessions, both locally and remote servers as well. You can use PGAdmin to perform any sort of database administration required for a Postgres database.
 
+``workshop directory:``
+```
+cd /data/Workshop-DC/01--Preflight
+```
+
+``create a pgadmin namespace:``
+```
+kubectl create namespace pgadmin
+kubectl get namespace
+```
+
+
 ``create a pgadmin secret:``
 ```
-kubectl create -f pgadmin-secret.yml -n data-source
+kubectl create -f pgadmin-secret.yml -n pgadmin
 ```
 ``define connection settings:``
 ```
-kubectl create -f pgadmin-configmap.yml -n data-source
+kubectl create -f pgadmin-configmap.yml -n pgadmin
 ```
-``deploy stateful pgadmin:``
+``deploy pgadmin:``
 ```
-kubectl apply -f pgadmin-statefulset.yml
+kubectl apply -f pgadmin-deployment.yml
+```
+``configure the PGAdmin service:``
+```
+kubectl create -f pgadmin-service.yml -n data-source
 ```
 
   > browse to: http://10.0.0.1:8000
 
-intial credentials:  
-User: pgadmin_user@hv.com  
+intial credentials:    
+User: pgadmin_user@hv.com    
 Password: password
+
+
+
 
 ---
