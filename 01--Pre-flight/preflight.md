@@ -135,3 +135,19 @@ kubectl delete configmap postgres-config -n data-source
 kubectl delete persistentvolumeclaim postgres-pv-claim -n data-source
 kubectl delete persistentvolume postgres-pv-volume -n data-source
 ```
+
+<em>Install pgAdmin 4</em>
+
+PGAdmin is a web-based GUI tool used to interact with the Postgres database sessions, both locally and remote servers as well. You can use PGAdmin to perform any sort of database administration required for a Postgres database.
+
+```
+kubectl create -f pgadmin-secret.yml -n data-source
+```
+
+```
+kubectl create -f pgadmin-configmap.yml -n data-source
+```
+
+```
+kubectl apply -f pgadmin-statefulset.yml
+```
