@@ -70,6 +70,11 @@ Note: k3s is installed with Traefik disabled. Not required for single node.
 
 PostgreSQL is used as the primary data store or data warehouse for many web, mobile, geospatial, and analytics applications. PostgreSQL can store structured and unstructured data in a single product.
 
+``workshop directory:``
+```
+cd /data/Workshop-DC/01--Preflight
+```
+
 ``create a data-source namespace:``
 ```
 kubectl create namespace data-source
@@ -87,10 +92,9 @@ Here, we are using local directory/path as Persistent storage resource (/mnt/dat
 
 ``define persistent storage:``
 ```
-cd /data/Workshop-DC/01--Preflight
 kubectl create -f postgres-storage.yml -n data-source
 ```
-Note: PostgreSQL manifest for deployment of PostgreSQL container uses PostgreSQL 10.4 image. It is using PostgreSQL configuration like username, password, database name from the configmap that we created earlier. It also mounts the volume created from the persistent volumes and claims to make PostgreSQL container’s data persists.
+Note: PostgreSQL manifest for deployment of PostgreSQL container uses PostgreSQL latest image. It is using PostgreSQL configuration like username, password, database name from the configmap that we created earlier. It also mounts the volume created from the persistent volumes and claims to make PostgreSQL container’s data persists.
 
 ``check if the PVC is connected to the PV successfully:``
 ```
@@ -156,8 +160,8 @@ kubectl apply -f pgadmin-statefulset.yml
 
   > browse to: http://10.0.0.1:8000
 
-intial credentials:
-User: pgadmin_user@hv.com
+intial credentials:  
+User: pgadmin_user@hv.com  
 Password: password
 
 ---
