@@ -126,8 +126,9 @@ kubectl exec -it [postgres-xxxxx] -n data-source --  psql -h 10.0.0.1 -U admin -
 Password: password
 ``log in as root:``
 ```
-kubectl exec -it [postgres-xxxxx] -n data-source --  psql -h 10.0.0.1 -U root -p [port] postgresdb
+kubectl exec -it [postgres-xxxxx] -n data-source --  container postgres --sh
 ```
+
 
 
 to delete PostgresSQL resources:
@@ -156,7 +157,6 @@ kubectl create namespace pgadmin
 kubectl get namespace
 ```
 
-
 ``create a pgadmin secret:``
 ```
 kubectl create -f pgadmin-secret.yml -n pgadmin
@@ -167,14 +167,14 @@ kubectl create -f pgadmin-configmap.yml -n pgadmin
 ```
 ``deploy pgadmin:``
 ```
-kubectl apply -f pgadmin-deployment.yml
+kubectl apply -f pgadmin-deployment.yml -n pgadmin
 ```
 ``configure the PGAdmin service:``
 ```
-kubectl create -f pgadmin-service.yml -n data-source
+kubectl create -f pgadmin-service.yml -n pgadmin
 ```
 
-  > browse to: http://10.0.0.1:8000
+  > browse to: http://10.0.0.1:
 
 intial credentials:    
 User: pgadmin_user@hv.com    
