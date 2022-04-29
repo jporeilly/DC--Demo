@@ -70,9 +70,10 @@ Note: k3s is installed with Traefik disabled. Not required for single node.
 
 PostgreSQL is used as the primary data store or data warehouse for many web, mobile, geospatial, and analytics applications. PostgreSQL can store structured and unstructured data in a single product.
 
-``create a ds namespace:``
+``create a data-source namespace:``
 ```
 kubectl create namespace data-source
+kubectl get namespace
 ```
 
 ``create a postgres secret:``
@@ -87,6 +88,7 @@ Here, we are using local directory/path as Persistent storage resource (/mnt/dat
 
 ``define persistent storage:``
 ```
+cd /data/Workshop-DC/01--Preflight
 kubectl create -f postgres-storage.yml -n data-source
 ```
 Note: PostgreSQL manifest for deployment of PostgreSQL container uses PostgreSQL 10.4 image. It is using PostgreSQL configuration like username, password, database name from the configmap that we created earlier. It also mounts the volume created from the persistent volumes and claims to make PostgreSQL container’s data persists.
@@ -108,18 +110,28 @@ kubectl create -f postgres-service.yml -n data-source
 ```
 Note: To access the deployment or container, we need to expose PostgreSQL service. Kubernetes provides different type of services like ClusterIP, NodePort and LoadBalancer.
 
-``get the Node port from the service:``
-```
-kubectl get svc postgres -n data-source
-```
-Note: make a note of the port used to connect to PostgreSQL.
-
-``list all resources on the system:`
+``list all resources on the system:``
 ```
 kubectl get all -n data-source
 ```
+Note: make a note of the port used to connect to PostgreSQL.
 
 ``log into the PostgreSQL instance:``
 ```
-kubectl exec -it [pod-name] --  psql -h localhost -U admin --password -p [port] postgresdb -n data-source
+kubectl exec -it [postgres-xxxxx] -n data-source --  psql -h 10.0.0.1 -U admin --password -p [port] postgresdb
+```
+Password: password
+``log in as root:``
+```
+kubectl exec -it [postgres-xxxxx] -n data-source --  psql -h 10.0.0.1 -U root -p [port] postgresdb
+```
+
+
+to delete PostgresSQL resources:
+```
+kubectl delete service postgres -n data-source
+kubectl delete deployment postgres -n data-source
+kubectl delete configmap postgres-config -n data-source
+kubectl delete persistentvolumeclaim postgres-pv-claim -n data-source
+kubectl delete persistentvolume postgres-pv-volume -n data-source
 ```
