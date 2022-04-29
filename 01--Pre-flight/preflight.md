@@ -129,8 +129,6 @@ Password: password
 kubectl exec -it [postgres-xxxxx] -n data-source --  container postgres --sh
 ```
 
-
-
 to delete PostgresSQL resources:
 ```
 kubectl delete service postgres -n data-source
@@ -180,7 +178,15 @@ intial credentials:
 User: pgadmin_user@hv.com    
 Password: password
 
-
-
-
 ---
+
+<em>Copy over Postgres driver to Data Catalog Agent</em>
+
+```
+kubectl get pod POD_NAME_HERE -n ldc -o jsonpath="{.spec['containers','initContainers'][*].name}"
+```
+
+```
+cd /data/Workshop--DC/01--Pre-flight/resources
+kubectl cp postgresql-42.3.4.jar ldc/ldc-agent-xxxxx:opt/ldc/agent/ext --container=
+```
