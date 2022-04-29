@@ -21,12 +21,19 @@ cd Downloads
 ./ldc-load-images.sh -i ldc-images-7.0.0-rc.7.tar.gz -r localhost:5000
 ```
 
-
+``create a ldc namespace in k3s:``
 ```
 kubectl create namespace ldc
 kubectl get namespace
 ```
 
+``install Data Catalog:``
 ```
 helm install ldc ldc-7.0.0-rc.7.tgz --set global.registry=localhost:5000 -f values.yml -n ldc
 ```
+
+``check all Pods:``
+```
+kubectl get all
+```
+Note: make a note of the
