@@ -172,11 +172,25 @@ kubectl create -f pgadmin-service.yml -n pgadmin
 kubectl create -f pgadmin-statefulset.yml -n pgadmin
 ```
 
-  > browse to: http://10.0.0.1:64299
+To retrieve the ClusterIP:
+
+``pgadmin ClusterIP:``
+```
+kubectl get svc -n pgadmin -o wide
+```
+``PostgreSQLdb ClusterIP:``
+```
+kubectl get svc -n data-source -o wide
+```
+
+  > browse to: http://<PGADMIN_CLUSTERIP>:8000
 
 intial credentials:    
-User: pgadmin_user@hv.com    
-Password: password
+User: pgadmin@hv.com    
+Password: SuperSecret
+
+
+```
 
 ---
 
