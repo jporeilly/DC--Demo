@@ -163,16 +163,16 @@ kubectl create -f pgadmin-secret.yml -n pgadmin
 ```
 kubectl create -f pgadmin-configmap.yml -n pgadmin
 ```
-``deploy pgadmin:``
-```
-kubectl apply -f pgadmin-deployment.yml -n pgadmin
-```
-``configure the PGAdmin service:``
+``deploy pgadmin service:``
 ```
 kubectl create -f pgadmin-service.yml -n pgadmin
 ```
+``configure the pgadmin statefulset:``
+```
+kubectl create -f pgadmin-statefulset.yml -n pgadmin
+```
 
-  > browse to: http://10.0.0.1:
+  > browse to: http://10.0.0.1:64299
 
 intial credentials:    
 User: pgadmin_user@hv.com    
