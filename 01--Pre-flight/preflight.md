@@ -172,7 +172,7 @@ kubectl create -f pgadmin-service.yml -n pgadmin
 kubectl create -f pgadmin-statefulset.yml -n pgadmin
 ```
 
-To retrieve the ClusterIP:
+To retrieve the ClusterIPs:
 
 ``pgadmin ClusterIP:``
 ```
@@ -189,18 +189,23 @@ intial credentials:
 User: pgadmin@hv.com    
 Password: SuperSecret
 
-
-```
-
 ---
 
 <em>Copy over Postgres driver to Data Catalog Agent</em>
 
+``retrive DC Agent Pod name:``
+```
+kubectl get pods -n ldc
+```
+
+``retrieve init-Container name:``
 ```
 kubectl get pod POD_NAME_HERE -n ldc -o jsonpath="{.spec['containers','initContainers'][*].name}"
 ```
 
 ```
 cd /data/Workshop--DC/01--Pre-flight/resources
-kubectl cp postgresql-42.3.4.jar ldc/ldc-agent-xxxxx:opt/ldc/agent/ext --container=
+kubectl cp postgresql-42.3.4.jar ldc/ldc-agent-xxxxx:opt/ldc/agent/ext --container=agent
 ```
+
+---
