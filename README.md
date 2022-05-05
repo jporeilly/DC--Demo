@@ -11,10 +11,9 @@ Configure SkyTap Lab:
 
 * k3s
 
-#### <font color='red'>Module 02 - DC Installation</font>
+#### <font color='red'>Module 02 - Installation of Data Catalog 7.0</font>
 * Create ldc namespace
-* Upload images & charts
-* Configure extra-vars.yml
+* Configure values.yml
 
 
 <font color='teal'>For the latest updates execute the following script: ~/Latest--Workshop ./clone_latest_workshop.sh </font>

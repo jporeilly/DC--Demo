@@ -4,7 +4,8 @@ The following pre-requisites configure the Data Catalog 7.0.
 
 Prerequisites for the DC 7.0 server:
 * Docker
-* Docker Compose 
+* Docker Compose
+* Docker Registry + UI 
 
 * k3s - Rancher
 * PostgreSQL
@@ -13,13 +14,14 @@ Prerequisites for the DC 7.0 server:
 
 ---
 
-<em>Install Docker</em>
+<em>Install Docker / Docker Compose</em>
 
 The following script prepares an Ubuntu 20.04 server for DC 7.0.  
 Docker Registry is installed with a HTTP connection.
 
 ``run the script:``
 ```
+cd /data/Workshop-DC/01--Pre-flight
 sudo ./pre-flight_dc.sh
 ```
 
@@ -60,7 +62,7 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 
 ``run the script:``
 ```
-
+cd /data/Workshop-DC/01--Pre-flight
 sudo ./install_k3s.sh
 ```
 Note: k3s is installed with Traefik disabled. Not required for single node.
@@ -206,7 +208,7 @@ kubectl get pod POD_NAME_HERE -n ldc -o jsonpath="{.spec['containers','initConta
 
 ```
 cd /data/Workshop--DC/01--Pre-flight/resources
-kubectl cp postgresql-42.3.4.jar ldc/ldc-agent-xxxxx:opt/ldc/agent/ext --container=agent
+kubectl cp postgresql-42.3.4.jar ldc/ldc-agent-xxxxx:/opt/ldc/agent/ext --container=agent
 ```
 
 ---
