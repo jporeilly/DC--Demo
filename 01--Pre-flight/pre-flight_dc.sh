@@ -4,8 +4,7 @@
 # Edit your /etc/hosts file to resolve IP and FQDN. 
 # Pre-requisite steps: disable swap
 #                      disable firewall (demo only)
-# Install packages:
-#                      Jq
+# Install packages:    Jq
 #                      Helm
 #
 # Pre-requistes steps for Docker: 
