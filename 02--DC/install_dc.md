@@ -17,7 +17,7 @@ Password: admin
 
 ``upload images:``
 ```
-cd Downloads
+cd /data/Packages
 ./ldc-load-images.sh -i ldc-images-7.0.1.tar.gz -r localhost:5000
 ```
 
