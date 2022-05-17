@@ -8,6 +8,10 @@ app-server:
     nodePort: 31080
   keycloak:
     authServerUrl: "http://ldc.skytap.example:30880/auth"
+
+global:
+  registry: ldc.skytap.example:5000
+
   ingress:
     enabled: true
     hosts:
