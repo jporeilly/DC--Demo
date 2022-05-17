@@ -36,7 +36,7 @@ helm install ldc ldc-7.0.1.tgz --set global.registry=localhost:5000 -f values.ym
 ```
 kubectl get all
 ```
-Note: make a note of the
+Note: make a note of the ldc-agent 
 
 ---
 
