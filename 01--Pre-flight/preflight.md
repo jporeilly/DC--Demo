@@ -23,6 +23,7 @@ Docker Registry is installed with a HTTP connection.
 cd /data/Workshop-DC/01--Pre-flight
 sudo ./pre-flight_dc.sh
 ```
+Note: you may need to change permission: sudo chmod +x pre-flight_dc.sh
 
 --- 
 
@@ -65,24 +66,5 @@ cd /data/Workshop-DC/01--Pre-flight
 sudo ./install_k3s.sh
 ```
 Note: k3s is installed with Traefik disabled. Not required for single node.
-
----
-
-<em>Copy over Postgres driver to Data Catalog Agent</em>
-
-``retrive DC Agent Pod name:``
-```
-kubectl get pods -n ldc
-```
-
-``retrieve init-Container name:``
-```
-kubectl get pod POD_NAME_HERE -n ldc -o jsonpath="{.spec['containers','initContainers'][*].name}"
-```
-
-```
-cd /data/Workshop--DC/01--Pre-flight/resources
-kubectl cp postgresql-42.3.4.jar ldc/ldc-agent-xxxxx:/opt/ldc/agent/ext --container=agent
-```
 
 ---

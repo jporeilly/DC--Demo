@@ -37,3 +37,24 @@ helm install ldc ldc-7.0.1.tgz --set global.registry=localhost:5000 -f values.ym
 kubectl get all
 ```
 Note: make a note of the
+
+---
+
+<em>Copy over Postgres driver to Data Catalog Agent</em>
+
+``retrive DC Agent Pod name:``
+```
+kubectl get pods -n ldc
+```
+
+``retrieve init-Container name:``
+```
+kubectl get pod POD_NAME_HERE -n ldc -o jsonpath="{.spec['containers','initContainers'][*].name}"
+```
+
+```
+cd /data/Workshop--DC/01--Pre-flight/resources
+kubectl cp postgresql-42.3.4.jar ldc/ldc-agent-xxxxx:/opt/ldc/agent/ext --container=agent
+```
+
+---
