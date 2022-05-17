@@ -45,13 +45,13 @@ Resolution:
 
 * finally test that the Docker Regsitry is up and running
 
-  > navigate to: http://localhost:8080
+  > navigate to: http://ldc.skytap.example:8080
 
 ``login into the Registry:``
 ```
-docker login localhost:5000
+docker login ldc.skytap.example:5000
 Username: admin
-Password: admin   
+Password: password   
 ```
 
 ---
