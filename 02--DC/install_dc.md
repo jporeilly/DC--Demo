@@ -6,11 +6,11 @@ To download the Data Catalog images and Charts, you will need to contact your Ac
 
 The local Docker Registry has frontend UI.
 
-  > navigate to: http://localhost:8080
+  > navigate to: http://ldc.skytap.example:8080
 
 ``login into the Registry:``
 ```
-docker login localhost:5000
+docker login ldc.skytap.example:5000
 Username: admin
 Password: admin   
 ```
@@ -18,7 +18,7 @@ Password: admin
 ``upload images:``
 ```
 cd /data/Packages
-./ldc-load-images.sh -i ldc-images-7.0.1.tar.gz -r localhost:5000
+./ldc-load-images.sh -i ldc-images-7.0.1.tar.gz -r ldc.skytap.example:5000
 ```
 
 ``create a ldc namespace in k3s:``
@@ -29,7 +29,7 @@ kubectl get namespace
 
 ``install Data Catalog:``
 ```
-helm install ldc ldc-7.0.1.tgz --set global.registry=localhost:5000 -f values.yml -n ldc
+helm install ldc ldc-7.0.1.tgz -f values.yml -n ldc
 ```
 
 ``check all Pods:``
