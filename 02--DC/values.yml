@@ -16,7 +16,7 @@ app-server:
           pathType: Prefix
  
 minio-bundled:
-  buckets: [{"name": "ldc", "policy": "none"}, {"name": "ldc-demo-data", "policy": "none"}, {"name": "spark-history", "policy": "none"}]
+  buckets: [{"name": "ldc", "policy": "none"}, {"name": "ldc-demo-data", "policy": "none"}, {"name": "spark-history", "policy": "none"}, {"name": "ldc-discovery-cache/ext/jdbc", "policy": "none"}]
   accessKey: minioadmin
   secretKey: minioadmin
   persistence:
@@ -38,3 +38,7 @@ mongodb:
       size: 5Gi
       accessModes:
         - ReadWriteOnce
+
+agent:
+  initJDBC:
+    enabled: true        
