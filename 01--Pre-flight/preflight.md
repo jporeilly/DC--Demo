@@ -1,14 +1,13 @@
-## <font color='red'>Data Catalog 7.0 Preflight - Hardware & Utils</font>  
+## <font color='red'>Data Catalog 7.0.1 Preflight - Hardware & Utils</font>  
 
-The following pre-requisites configure the Data Catalog 7.0.
+The following pre-requisites configure the Data Catalog 7.0.1
 
-Prerequisites for the DC 7.0 server:
+Prerequisites for the DC 7.0.1 server:
 * Docker
 * Docker Compose
 * Docker Registry + UI 
 
 * k3s - Rancher
-* PostgreSQL
 
 <font color='teal'>This section is for reference only. These tasks have already been completed.</font>
 
@@ -16,7 +15,7 @@ Prerequisites for the DC 7.0 server:
 
 <em>Install Docker / Docker Compose</em>
 
-The following script prepares an Ubuntu 20.04 server for DC 7.0.  
+The following script prepares an Ubuntu 20.04 server for DC 7.0.1  
 Docker Registry is installed with a HTTP connection.
 
 ``run the script:``
