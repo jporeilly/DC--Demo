@@ -1,4 +1,4 @@
-## <font color='red'>Workshop - Data Catalog 7.0</font>
+## <font color='red'>Workshop - Data Catalog 7.0.1</font>
 
 
 ```
