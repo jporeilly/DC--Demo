@@ -46,6 +46,12 @@ Note: make a note of the ldc-agent
 
 ---
 
+## <font color='red'>Post Installation Tasks</font>
+
+* Copy over postgresql driver
+* Confgure Agent
+* Configure Virtual Folders
+
 <em>Copy over Postgres driver to Data Catalog Agent</em>
 
 ``retrive DC Agent Pod name:``
