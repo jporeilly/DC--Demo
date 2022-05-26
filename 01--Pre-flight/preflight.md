@@ -68,3 +68,29 @@ sudo ./install_k3s.sh
 Note: k3s is installed with Traefik disabled. Not required for single node.
 
 ---
+
+
+<em>.kubectl_aliases</em>  
+To save typing out the kubectl commands, in the resources folder there's a kubectl_aliases file which you copy over to your $HOME directory.
+
+<font color='teal'>The .kubectl_alias has been configured.</font>
+
+``add the following to your .bashrc/.zshrc file:``
+```
+cd 
+sudo nano .bashrc
+[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
+```
+
+If you want to print the full command before running it.   
+
+``add this to your .bashrc or .zshrc file:``
+```
+function kubectl() { echo "+ kubectl $@">&2; command kubectl $@; }
+```
+
+For further information:
+
+> browse to: https://github.com/ahmetb/kubectl-aliases
+
+--- 
