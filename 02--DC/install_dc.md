@@ -81,7 +81,7 @@ The minIO browser enables you to view the defined storage buckets.
 
   > navigate to: http://ldc.skytap.example:30900/minio/login
 
-Access Key: minioadmin
+Access Key: minioadmin  
 Secret Key: minioadmin
 
 Note: the keys have been set in the values.yml
@@ -95,3 +95,5 @@ Note: these minIO buckets are defined in the values.yml
 * <font color='teal'>ldc-demo-data:</font>  demo data
 * <font color='teal'>ldc-discovery-cache:</font> persistent jdbc drivers 
 * <font color='teal'>spark-history:</font> history of spark jobs / events
+
+---
