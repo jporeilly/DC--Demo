@@ -20,7 +20,7 @@ Docker Registry is installed with a HTTP connection (insecure).
 
 ``run the script:``
 ```
-cd Scripts/01--Pre-flight
+cd Scripts
 sudo ./pre-flight.sh
 ```
 Note: you may need to change permission: sudo chmod +x pre-flight.sh
@@ -62,7 +62,7 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 
 ``run the script:``
 ```
-cd Workshop-DC/01--Pre-flight
+cd Scripts
 sudo ./deploy_k3s.sh
 ```
 Note: k3s is installed with Traefik disabled. Not required for single node.
