@@ -29,7 +29,16 @@ Note: you may need to change permission: sudo chmod +x pre-flight.sh
 
 <em>Docker Registry</em>
 
-Docker client always attempts to connect to registries by first using HTTPS. You must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to Harbor:  
+The Docker Regsitry is installed as a container.
+
+``deploy Registry container:``
+```
+cd /Docker-Registry
+docker-compose up -d
+```
+Note: check that the container is up and running -Visual Studio Code
+
+Docker client always attempts to connect to registries by first using HTTPS. You must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to the Registry:  
 
 ```Error response from daemon: Get https://myregistrydomain.com/v2/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.```
 
@@ -38,6 +47,12 @@ Resolution:
 * Ensure all the containers have started. Check containers in Docker section of VSC.
 
 ```
+cd /etc/docker
+sudo nano daemon.json
+```
+
+``check the entry:``
+```
 {
 "insecure-registries" : ["data-catalog.skytap.example:5000", "0.0.0.0"]
 }
@@ -45,13 +60,13 @@ Resolution:
 
 * finally test that the Docker Regsitry is up and running
 
-  > navigate to: http://data-catalog.skytap.example:8080
+  > navigate to: http://foundry.skytap.example:8080
 
 ``login into the Registry:``
 ```
-docker login data-catalog.skytap.example:5000
+docker login localhost:5000
 Username: admin
-Password: password   
+Password: password  
 ```
 
 ---
@@ -63,7 +78,7 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 ``run the script:``
 ```
 cd Scripts
-sudo ./deploy_k3s.sh
+./deploy_k3s.sh
 ```
 Note: k3s is installed with Traefik disabled. Not required for single node.
 
