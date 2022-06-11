@@ -20,10 +20,10 @@ Docker Registry is installed with a HTTP connection (insecure).
 
 ``run the script:``
 ```
-cd Workshop-DC/01--Pre-flight
+cd Scripts/01--Pre-flight
 sudo ./pre-flight.sh
 ```
-Note: you may need to change permission: sudo chmod +x pre-flight_dc.sh
+Note: you may need to change permission: sudo chmod +x pre-flight.sh
 
 --- 
 
