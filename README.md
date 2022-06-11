@@ -1,4 +1,4 @@
-## <font color='red'>Data Catalog 7.0: Installation & Configuration</font>
+## <font color='red'>Data Catalog 7.0.1: Installation & Configuration</font>
 The following workshop is intended to highlight an on-premise bare-metal installation and configuration of DC 7.0. The installation and configuration steps have been modified for a training environment and therefore are <font color='red'>NOT</font> to be used for a production environment.
 
 #### <font color='red'>Module 01 - Pre-flight</font>
@@ -11,8 +11,8 @@ Configure SkyTap Lab:
 
 * k3s
 
-#### <font color='red'>Module 02 - Installation of Data Catalog 7.0</font>
-* Create ldc namespace
+#### <font color='red'>Module 02 - Installation of Data Catalog 7.0.1</font>
+* Create dc namespace
 * Configure values.yml
 
 
@@ -22,7 +22,7 @@ Configure SkyTap Lab:
 
 | Artifact                   | Date     |  
 | ---------------------------| ---------| 
-| Released                   |          | 
+| Released                   | 01/07/22 | 
 |                            |          |               
 |
  

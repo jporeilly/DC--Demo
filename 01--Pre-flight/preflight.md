@@ -15,12 +15,12 @@ Prerequisites for the DC 7.0.1 server:
 
 <em>Install Docker / Docker Compose</em>
 
-The following script prepares an Ubuntu 20.04 server for DC 7.0.1  
+The following script prepares an Alma (RHEL) 8 server for DC 7.0.1  
 Docker Registry is installed with a HTTP connection (insecure).
 
 ``run the script:``
 ```
-cd /data/Workshop-DC/01--Pre-flight
+cd Workshop-DC/01--Pre-flight
 sudo ./pre-flight_dc.sh
 ```
 Note: you may need to change permission: sudo chmod +x pre-flight_dc.sh
@@ -39,17 +39,17 @@ Resolution:
 
 ```
 {
-"insecure-registries" : ["myregistrydomain.com:port", "0.0.0.0"]
+"insecure-registries" : ["data-catalog.skytap.example:5000", "0.0.0.0"]
 }
 ```
 
 * finally test that the Docker Regsitry is up and running
 
-  > navigate to: http://ldc.skytap.example:8080
+  > navigate to: http://data-catalog.skytap.example:8080
 
 ``login into the Registry:``
 ```
-docker login ldc.skytap.example:5000
+docker login data-catalog.skytap.example:5000
 Username: admin
 Password: password   
 ```
@@ -62,7 +62,7 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 
 ``run the script:``
 ```
-cd /data/Workshop-DC/01--Pre-flight
+cd Workshop-DC/01--Pre-flight
 sudo ./install_k3s.sh
 ```
 Note: k3s is installed with Traefik disabled. Not required for single node.
