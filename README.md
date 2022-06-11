@@ -12,7 +12,7 @@ Configure SkyTap Lab:
 * k3s
 
 #### <font color='red'>Module 02 - Installation of Data Catalog 7.0.1</font>
-* Create dc namespace
+* Create ldc namespace
 * Configure values.yml
 
 
