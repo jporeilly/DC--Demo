@@ -16,14 +16,13 @@ Configure SkyTap Lab:
 * Configure values.yml
 
 
-<font color='teal'>For the latest updates execute the following script: ~/Latest--Workshop ./clone_latest_workshop.sh </font>
+<font color='teal'>For the latest updates execute the following script: ~/Scrpts ./clone_latest_workshop.sh </font>
 
 #### <em> Changelog </em>
 
 | Artifact                   | Date     |  
 | ---------------------------| ---------| 
-| Released                   | 01/07/22 | 
-|                            |          |               
+| Released                   | 01/07/22 |               
 |
  
 
