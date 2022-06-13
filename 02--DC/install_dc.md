@@ -36,6 +36,7 @@ Note: Check that the images have been uploaded.
 
 ``install Data Catalog:``
 ```
+cd Packages
 helm install ldc ldc-7.0.1.tgz -f values.yml -n ldc
 ```
 ``check all Pods:``
@@ -65,7 +66,7 @@ kubectl get pod POD_NAME_HERE -n ldc -o jsonpath="{.spec['containers','initConta
 
 ``copy over postgresql driver:``
 ```
-cd /data/Workshop--DC/01--Pre-flight/resources
+cd /Workshop--DC/01--Pre-flight/resources
 kubectl cp postgresql-42.3.4.jar ldc/ldc-agent-xxxxx:/opt/ldc/agent/ext --container=agent
 ```
 Note: You can also copy over the driver in MinIO.
