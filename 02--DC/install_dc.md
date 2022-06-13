@@ -28,7 +28,7 @@ Note: You can also connect to the Registry via VSC.
 cd Packages
 ./ldc-load-images.sh -i ldc-images-7.0.1.tar.gz -r data-catalog.skytap.example:5000
 ```
-Note: Check that the images have been uploaded.
+Note: Be patient as the images have to be unpacked and then uploaded.
 
 ---
 
