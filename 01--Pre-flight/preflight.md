@@ -37,18 +37,18 @@ sudo mkdir -p /certs
 ```
 ``create certs:``
 ```
-sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout /certs/registry.key -x509 -days 365 -out /certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:foundry.skytap.example"
+sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout /certs/registry.key -x509 -days 365 -out /certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:data-catalog.skytap.example"
 ```
 
 ``copy certs to Registry:``
 ```
-sudo cp /certs/registry.* /data/Docker-Registry/certs
+sudo cp /certs/registry.* Docker-Registry/certs
 ```
 
 ``copy certs to Docker:``
 ```
-sudo mkdir -p /etc/docker/certs.d/foundry.skytap.example:5000
-sudo cp /certs/registry.* /etc/docker/certs.d/foundry.skytap.example:5000
+sudo mkdir -p /etc/docker/certs.d/data-catalog.skytap.example:5000
+sudo cp /certs/registry.* /etc/docker/certs.d/data-catalog.skytap.example:5000
 ```
 
 ``copy certs to Node:``
@@ -67,13 +67,13 @@ sudo systemctl restart docker
 firewall-cmd --permanent --add-port=5000/tcp
 firewall-cmd --reload
 ```
-Note: not required as firewall is disabled.
+Note: not required as firewall is disabled (but yoiu would have to open ports in production).
 
 The Docker Regsitry is installed as a container.
 
 ``deploy Registry container:``
 ```
-cd /data/Docker-Registry
+cd Docker-Registry
 docker-compose up -d
 ```
 Note: check that the container is up and running -Visual Studio Code
@@ -94,13 +94,13 @@ sudo nano daemon.json
 ``check the entry:``
 ```
 {
-"insecure-registries" : ["foundry.skytap.example:5000", "0.0.0.0"]
+"insecure-registries" : ["data-catalog.example:5000", "0.0.0.0"]
 }
 ```
 
 * finally test that the Docker Regsitry is up and running
 
-  > navigate to: http://foundry.skytap.example:8080
+  > navigate to: http://data-catalog.skytap.example:8080
 
 ``login into the Registry:``
 ```
@@ -111,7 +111,7 @@ Password: password
 
 ``check certs:``
 ```
-openssl s_client -showcerts -connect foundry.skytap.example:5000
+openssl s_client -showcerts -connect data-catalog.skytap.example:5000
 ```
 
 ---
