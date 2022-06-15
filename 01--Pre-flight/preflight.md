@@ -49,7 +49,7 @@ sudo mkdir /etc/docker-distribution/certs
 ``create certs:``
 ```
 cd /etc/docker-distribution/certs
-sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout /certs/registry.key -x509 -days 365 -out /certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:data-catalog.skytap.example"
+sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout registry.key -x509 -days 365 -out registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:data-catalog.skytap.example"
 ```
 
 ``copy certs to Node:``
@@ -104,7 +104,7 @@ Note: not required as firewall is disabled (open ports in production).
 
 ``login into the Registry:``
 ```
-docker login localhost:5000
+docker login data-catalog.skytap.example:5000
 Username: admin
 Password: password  
 ```
