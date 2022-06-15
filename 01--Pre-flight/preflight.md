@@ -54,7 +54,7 @@ sudo cp /certs/registry.* /etc/docker/certs.d/foundry.skytap.example:5000
 ``copy certs to Node:``
 ```
 sudo cp /certs/registry.* /etc/pki/ca-trust/source/anchors/
-sudo update-ca-trust
+sudo update-ca-trust extract
 ```
 
 ``restart docker:``
