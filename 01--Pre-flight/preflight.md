@@ -29,11 +29,51 @@ Note: you may need to change permission: sudo chmod +x pre-flight.sh
 
 <em>Docker Registry</em>
 
+By default, Docker client uses a secure connection over TLS to upload or download images to or from a private registry. You can use TLS certificates signed by CA or self-signed on Registry server.
+
+``create certs directory:``
+```
+sudo mkdir -p /certs
+```
+``create certs:``
+```
+sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout /certs/registry.key -x509 -days 365 -out /certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:foundry.skytap.example"
+```
+
+``copy certs to Registry:``
+```
+sudo cp /certs/registry.* /data/Docker-Registry/certs
+```
+
+``copy certs to Docker:``
+```
+sudo mkdir -p /etc/docker/certs.d/foundry.skytap.example:5000
+sudo cp /certs/registry.* /etc/docker/certs.d/foundry.skytap.example:5000
+```
+
+``copy certs to Node:``
+```
+sudo cp /certs/registry.* /etc/pki/ca-trust/source/anchors/
+sudo update-ca-trust
+```
+
+``restart docker:``
+```
+sudo systemctl restart docker
+```
+
+``add port to firewalld :``
+```
+firewall-cmd --permanent --add-port=5000/tcp
+firewall-cmd --reload
+```
+Note: not required as firewall is disabled.
+
 The Docker Regsitry is installed as a container.
 
 ``deploy Registry container:``
 ```
-cd /Docker-Registry
+cd /data/Docker-Registry
 docker-compose up -d
 ```
 Note: check that the container is up and running -Visual Studio Code
@@ -54,7 +94,7 @@ sudo nano daemon.json
 ``check the entry:``
 ```
 {
-"insecure-registries" : ["data-catalog.skytap.example:5000", "0.0.0.0"]
+"insecure-registries" : ["foundry.skytap.example:5000", "0.0.0.0"]
 }
 ```
 
@@ -69,6 +109,11 @@ Username: admin
 Password: password  
 ```
 
+``check certs:``
+```
+openssl s_client -showcerts -connect foundry.skytap.example:5000
+```
+
 ---
 
 <em>Install k3s - Rancher</em> 
@@ -81,6 +126,15 @@ cd Scripts
 ./deploy_k3s.sh
 ```
 Note: k3s is installed with Traefik disabled. Not required for single node.
+
+If you're having problems connecting to the node, ensure that the ``/etc/rancher/k3s/k3s.yaml`` has been copied over to the ``~/.kube/config`` and is: ``chown -R dc ``. 
+
+
+``uninstall Rancher:``
+```
+cd /usr/local/bin/
+sudo ./k3s-uninstall.sh
+```
 
 ---
 

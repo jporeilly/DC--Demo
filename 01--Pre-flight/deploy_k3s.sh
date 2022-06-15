@@ -15,7 +15,7 @@ sudo mkdir ~/.kube
 sudo chown -R $(id -u) /etc/rancher/k3s
 sudo cp -i /etc/rancher/k3s/k3s.yaml  $HOME/.kube/config
 sudo chown -R  $(id -u):$(id -g) $HOME/.kube/
-systemctl enable k3s
+sudo systemctl enable k3s
 sleep 5s
 kubectl get nodes # note kubernetes version
 sleep 10s
