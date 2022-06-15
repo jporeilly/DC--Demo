@@ -76,7 +76,7 @@ The Docker Regsitry is installed as a container.
 cd Docker-Registry
 docker-compose up -d
 ```
-Note: check that the container is up and running -Visual Studio Code
+Note: check that the docker-compose.yml has been copied over and that the container is up and running - Visual Studio Code.
 
 Docker client always attempts to connect to registries by first using HTTPS. You must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to the Registry:  
 
@@ -96,6 +96,11 @@ sudo nano daemon.json
 {
 "insecure-registries" : ["data-catalog.example:5000", "0.0.0.0"]
 }
+```
+
+``you wwill need to reboot:``
+```
+reboot  
 ```
 
 * finally test that the Docker Regsitry is up and running
