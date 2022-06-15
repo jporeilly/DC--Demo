@@ -83,7 +83,7 @@ http:
       key: /etc/docker-distribution/certs/registry.key
     host: https://data-catalog.skytap.example:5000
     relativeurls: false
-
+```
 
 ``restart docker:``
 ```
