@@ -50,8 +50,7 @@ Note: make a note of the ldc-agent
 ## <font color='red'>Post Installation Tasks</font>
 
 * Copy over postgresql driver
-* Confgure Agent
-* Configure Virtual Folders
+
 
 <em>Copy over Postgres driver to Data Catalog Agent</em>
 
@@ -66,7 +65,7 @@ kubectl get pod POD_NAME_HERE -n ldc -o jsonpath="{.spec['containers','initConta
 
 ``copy over postgresql driver:``
 ```
-cd /Workshop--DC/01--Pre-flight/resources
+cd Workshop--DC/01--Pre-flight/resources
 kubectl cp postgresql-42.3.4.jar ldc/ldc-agent-xxxxx:/opt/ldc/agent/ext --container=agent
 ```
 Note: You can also copy over the driver in MinIO.
@@ -80,7 +79,7 @@ Native to Kubernetes, MinIO is the only object storage suite available on every 
 
 The minIO browser enables you to view the defined storage buckets.
 
-  > navigate to: http://ldc.skytap.example:30900/minio/login
+  > navigate to: http://data-catalog.skytap.example:30900/minio/login
 
 Access Key: minioadmin  
 Secret Key: minioadmin
