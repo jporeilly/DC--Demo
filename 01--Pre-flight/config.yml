@@ -1,0 +1,18 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+storage:
+    cache:
+        layerinfo: inmemory
+    filesystem:
+        rootdirectory: /var/lib/registry
+    delete:
+        enabled: true
+http:
+    addr: :5000
+    tls:
+      certificate: /etc/docker-distribution/certs/registry.crt
+      key: /etc/docker-distribution/certs/registry.key
+    host: https://data-catalog.skytap.example:5000
+    relativeurls: false
