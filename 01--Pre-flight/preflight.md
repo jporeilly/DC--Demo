@@ -67,7 +67,6 @@ sudo cp Docker-Registry/certs/registry.* /etc/docker/certs.d/data-catalog.skytap
 sudo systemctl restart docker
 ```
 
-
 ``add port to firewalld :``
 ```
 firewall-cmd --permanent --add-port=5000/tcp
@@ -86,7 +85,7 @@ Note: check that the container is up and running -Visual Studio Code
 
 Docker client always attempts to connect to registries by first using HTTPS. You must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to the Registry:  
 
-```Error response from daemon: Get https://myregistrydomain.com/v2/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.```
+``Error response from daemon: Get https://data-catlog.skytap.example/v2/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.``
 
 Resolution: 
 * Ensure the /etc/docker/daemon.json has the IP or FQDN. 
@@ -100,17 +99,17 @@ sudo nano daemon.json
 ``check the entry:``
 ```
 {
-"insecure-registries" : ["foundry.skytap.example:5000", "0.0.0.0"]
+"insecure-registries" : ["data-catalog.skytap.example:5000", "0.0.0.0"]
 }
 ```
 
 * finally test that the Docker Regsitry is up and running
 
-  > navigate to: http://foundry.skytap.example:8080
+  > navigate to: https://data-catalog.skytap.example:8080
 
 ``login into the Registry:``
 ```
-docker login foundry.skytap.example:5000
+docker login data-catalog.skytap.example:5000
 Username: admin
 Password: password  
 ```
