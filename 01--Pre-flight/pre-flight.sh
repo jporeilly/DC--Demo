@@ -17,9 +17,6 @@
 dnf update -y
 dnf upgrade -y
 dnf install epel-release -y
-dnf install snapd -y
-systemctl enable --now snapd.socket
-ln -s /var/lib/snapd/snap  /snap
 swapoff --all
 sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
 systemctl disable firewalld # Do not disable in Production.
