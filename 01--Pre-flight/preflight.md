@@ -31,68 +31,42 @@ Note: you may need to change permission: sudo chmod +x pre-flight.sh
 
 By default, Docker client uses a secure connection over TLS to upload or download images to or from a private registry. You can use TLS certificates signed by CA or self-signed on Registry server.
 
-``install docker-distribution:``
-```
-sudo yum install -y docker-distribution
-```
-``set to auto-start at system boot:``
-```
-sudo systemctl enable docker-distribution 
-```
-
 The container registry configuration file will need to be modified to allow the use of https (secure) communications.
+
+``create a Docker_Registry:``
+```
+sudo mkdir Docker-Registry
 
 ``create certs directory:``
 ```
-sudo mkdir /etc/docker-distribution/certs
+cd Docker-Registry
+sudo mkdir certs
 ```
+
 ``create certs:``
 ```
-cd /etc/docker-distribution/certs
-sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout registry.key -x509 -days 365 -out registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:data-catalog.skytap.example"
+sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout Docker-Registry/certs/registry.key -x509 -days 365 -out Docker-Registry/certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:data-catalog.skytap.example"
 ```
 
 ``copy certs to Node:``
 ```
+cd Docker-Registry/certs
 sudo cp registry.* /etc/pki/tls/certs
 sudo update-ca-trust extract
 ```
 
-``edit the file '/etc/docker-distribution/registry/config.yml':``
+``copy certs to Docker:``
 ```
 cd
-sudo nano /etc/docker-distribution/registry/config.yml
-```
-``add the following:``
-```
-version: 0.1
-log:
-  fields:
-    service: registry
-storage:
-    cache:
-        layerinfo: inmemory
-    filesystem:
-        rootdirectory: /var/lib/registry
-    delete:
-        enabled: true
-http:
-    addr: :5000
-    tls:
-      certificate: /etc/docker-distribution/certs/registry.crt
-      key: /etc/docker-distribution/certs/registry.key
-    host: https://data-catalog.skytap.example:5000
-    relativeurls: false
+sudo mkdir -p /etc/docker/certs.d/data-catalog.skytap.example:5000
+sudo cp Docker-Registry/certs/registry.* /etc/docker/certs.d/data-catalog.skytap.example:5000
 ```
 
 ``restart docker:``
 ```
 sudo systemctl restart docker
 ```
-``start Registry:``
-```
-sudo systemctl start docker-distribution
-```
+
 
 ``add port to firewalld :``
 ```
@@ -101,10 +75,42 @@ firewall-cmd --reload
 ```
 Note: not required as firewall is disabled (open ports in production).
 
+The Docker Regsitry is installed as a container.
+
+``deploy Registry container:``
+```
+cd Docker-Registry
+docker-compose up -d
+```
+Note: check that the container is up and running -Visual Studio Code
+
+Docker client always attempts to connect to registries by first using HTTPS. You must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to the Registry:  
+
+```Error response from daemon: Get https://myregistrydomain.com/v2/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.```
+
+Resolution: 
+* Ensure the /etc/docker/daemon.json has the IP or FQDN. 
+* Ensure all the containers have started. Check containers in Docker section of VSC.
+
+```
+cd /etc/docker
+sudo nano daemon.json
+```
+
+``check the entry:``
+```
+{
+"insecure-registries" : ["foundry.skytap.example:5000", "0.0.0.0"]
+}
+```
+
+* finally test that the Docker Regsitry is up and running
+
+  > navigate to: http://foundry.skytap.example:8080
 
 ``login into the Registry:``
 ```
-docker login data-catalog.skytap.example:5000
+docker login foundry.skytap.example:5000
 Username: admin
 Password: password  
 ```

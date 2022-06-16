@@ -10,7 +10,7 @@
 # Install Docker Compose
 # Install Docker Registry 
 #
-# 30/05/2022
+# 20/06/2022
 # ==================================================
 
 # Infrastructure
@@ -75,6 +75,7 @@ curl -s https://api.github.com/repos/docker/compose/releases/latest | grep brows
 chmod +x docker-compose-linux-x86_64
 mv docker-compose-linux-x86_64 /usr/local/bin/docker-compose
 ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+source ~/.bashrc
 
 # Update Docker Daemon for Insecure Registry
 tee /etc/docker/daemon.json >/dev/null <<EOF
