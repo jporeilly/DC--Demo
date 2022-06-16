@@ -36,6 +36,7 @@ The container registry configuration file will need to be modified to allow the 
 ``create a Docker_Registry:``
 ```
 sudo mkdir Docker-Registry
+```
 
 ``create certs directory:``
 ```
