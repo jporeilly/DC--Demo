@@ -32,23 +32,8 @@ echo -e "Infrastructure update completed .."
 sleep 3s
 echo -e "Install Pre-requisites .."
 
-# Yq Jq and Helm are no longer required as installed pre-requisite packages for Foundry. 
-# Foundry scripts are executed within a specific foundry_install_control_plane pod which has
-# the required installed packages. 
-# The packages are installed as they're required to execute other scripts.
-
-# Install Yq
-snap install yq
-sleep 2s
-echo -e "Yq installed .."
-
-# Install Jq 
-dnf install jq -y
-sleep 2s
-echo -e "Jq installed .."
-
 # Install Helm
-snap install helm --classic
+./get_helm.sh
 sleep 2s
 echo -e "Helm installed .."
 sleep 2s
