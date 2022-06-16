@@ -92,6 +92,13 @@ Resolution:
 * Ensure the /etc/docker/daemon.json has the IP or FQDN. 
 * Ensure all the containers have started. Check containers in Docker section of VSC.
 
+``login into the Registry:``
+```
+docker login data-catalog.skytap.example:5000
+Username: admin
+Password: password  
+```
+
 ```
 cd /etc/docker
 sudo nano daemon.json
@@ -108,12 +115,6 @@ sudo nano daemon.json
 
   > navigate to: https://data-catalog.skytap.example:8080
 
-``login into the Registry:``
-```
-docker login data-catalog.skytap.example:5000
-Username: admin
-Password: password  
-```
 
 ``check certs:``
 ```
@@ -129,7 +130,7 @@ K3s is an official CNCF sandbox project that delivers a lightweight yet powerful
 ``run the script:``
 ```
 cd Scripts
-./deploy_k3s.sh
+sudo ./deploy_k3s.sh
 ```
 Note: k3s is installed with Traefik disabled. Not required for single node.
 
