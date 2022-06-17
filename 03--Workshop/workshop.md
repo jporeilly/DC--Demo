@@ -52,11 +52,3 @@ Note: these minIO buckets are defined in the values.yml
 * spark-history: history of spark jobs / events
 
 ---
-
-
-
-
-
-
-
-```
