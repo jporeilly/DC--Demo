@@ -1,4 +1,3 @@
-### <font color='red'>Data Catalog 7.1.0</font>
 ### <font color='red'>Installation & Configuration</font>
 
 The following workshop is intended to highlight an on-premise bare-metal installation and configuration of DC 7.0. The installation and configuration steps have been modified for a training environment and therefore are <font color='red'>NOT</font> to be used for a production environment.
