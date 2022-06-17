@@ -7,10 +7,6 @@ To download the Data Catalog images and Charts, you will need to contact your Ac
 * The artifacts are not publicly available.
 * To save time, the artifacts have already been downloaded.
 
-The local Docker Registry has frontend UI.
-
-> navigate to: http://data-catalog.skytap.example:8080
-
 `create a ldc namespace in k3s:`
 
 ```
