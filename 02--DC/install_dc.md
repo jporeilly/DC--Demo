@@ -1,4 +1,4 @@
-## <font color='red'>Installation of Data Catalog 7.0.1</font>
+### <font color='red'>Installation of Data Catalog 7.1.0</font>
 
 To download the Data Catalog images and Charts, you will need to contact your Account Manager.  
 * The artifacts are not publicly available. 
@@ -26,7 +26,7 @@ Note: You can also connect to the Registry via VSC.
 ``upload images:``
 ```
 cd Packages
-./ldc-load-images.sh -i ldc-images-7.0.1.tar.gz -r data-catalog.skytap.example:5000
+./ldc-load-images.sh -i ldc-images-7.1.0.tar.gz -r data-catalog.skytap.example:5000
 ```
 Note: Be patient as the images have to be unpacked and then uploaded.
 
@@ -37,7 +37,7 @@ Note: Be patient as the images have to be unpacked and then uploaded.
 ``install Data Catalog:``
 ```
 cd Packages
-helm install ldc ldc-7.0.1.tgz -f values.yml -n ldc
+helm install ldc ldc-7.1.0.tgz -f values.yml -n ldc
 ```
 ``check all Pods:``
 ```
