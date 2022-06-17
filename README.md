@@ -8,7 +8,7 @@ Configure SkyTap Lab:
 * Docker
 * Docker Compose
 * Docker Registry
-* Jq
+* Jq & Yq
 * Helm
 
 * k3s
