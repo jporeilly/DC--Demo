@@ -1,39 +1,35 @@
-## <font color='red'>Data Catalog 7.0.1: Installation & Configuration</font>
+# Data Catalog 7.1.0: Installation & Configuration
 
-The following workshop is intended to highlight an on-premise bare-metal installation and configuration of DC 7.0. The installation and configuration steps have been modified for a training environment and therefore are <font color='red'>NOT</font> to be used for a production environment.
+The following workshop is intended to highlight an on-premise bare-metal installation and configuration of DC 7.1.0 The installation and configuration steps have been modified for a training environment and therefore are NOT to be used for a production environment.
 
-#### <font color='red'>Module 01 - Pre-flight</font>
+### Module 01 - Pre-flight
 
 Configure SkyTap Lab:
+
 * Docker
 * Docker Compose
 * Docker Registry
-* Jq
+* Jq & Yq
 * Helm
-
 * k3s
 
-#### <font color='red'>Module 02 - Installation of Data Catalog 7.0.1</font>
+### Module 02 - Installation of Data Catalog 7.1.0
 
 * Create ldc namespace
 * Configure values.yml
 * Upload images & Charts
-* Install DC 7.0.1
+* Install DC 7.1.0
 
-#### <font color='red'>Module 03 - Workshop</font>
+### Module 03 - Workshop
 
 * Configure Local Agent
 * Configure Virtual Folders
 
+For the latest updates execute the following script: \~/Scrpts ./clone\_latest\_workshop.sh
 
+### _Changelog_
 
-<font color='teal'>For the latest updates execute the following script: ~/Scrpts ./clone_latest_workshop.sh </font>
-
-#### <em> Changelog </em>
-
-| Artifact                   | Date     |  
-| ---------------------------| ---------| 
-| Released                   | 01/07/22 |               
-|
- 
-
+| Artifact | Date     |
+| -------- | -------- |
+| Released | 01/07/22 |
+|          |          |
