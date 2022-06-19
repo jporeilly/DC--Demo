@@ -20,7 +20,7 @@ global:
           pathType: Prefix
  
 minio-bundled:
-  buckets: [{"name": "dc", "policy": "none"}, {"name": "dc-demo-data", "policy": "none"}, {"name": "spark-history", "policy": "none"}, {"name": "dc-discovery-cache/ext/jdbc", "policy": "none"}]
+  buckets: [{"name": "dc", "policy": "none"}, {"name": "flight-delay-data", "policy": "none"}, {"name": "spark-history", "policy": "none"}, {"name": "dc-discovery-cache/ext/jdbc", "policy": "none"}]
   accessKey: minioadmin
   secretKey: minioadmin
   persistence:

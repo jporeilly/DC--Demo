@@ -1,5 +1,6 @@
 ### <font color='red'>Workshop - Data Catalog 7.1.0</font>
 
+* Upload flight-delay-data
 * Copy over postgresql driver
 
 
