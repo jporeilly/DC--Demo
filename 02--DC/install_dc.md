@@ -5,10 +5,10 @@ To download the Data Catalog images and Charts, you will need to contact your Ac
 * The artifacts are not publicly available.
 * To save time, the artifacts have already been downloaded.
 
-`create a ldc namespace in k3s:`
+`create a dc namespace in k3s:`
 
 ```
-kubectl create namespace ldc
+kubectl create namespace dc
 kubectl get namespace
 ```
 
@@ -20,15 +20,11 @@ Username: admin
 Password: password   
 ```
 
-Note: You can also connect to the Registry via VSC.
-
 `upload images:`
-
 ```
 cd Packages
 ./ldc-load-images.sh -i ldc-images-7.1.0.tar.gz -r data-catalog.skytap.example:5000
 ```
-
 Note: Be patient as the images have to be unpacked and then uploaded.
 
 ---
@@ -38,15 +34,16 @@ Note: Be patient as the images have to be unpacked and then uploaded.
 `install Data Catalog:`
 ```
 cd Packages
-helm install ldc ldc-7.1.0.tgz -f values.yml -n ldc
+helm install dc ldc-7.1.0.tgz -f values.yml -n dc
 ```
 
 `check all Pods:`
-
 ```
 kubectl get all
 ```
 
-Note: make a note of the ldc-agent
+Note: make a note of the dc-agent
 
 ---
+
+
