@@ -4,14 +4,12 @@ The following workshop is intended to highlight an on-premise bare-metal install
 
 #### <font color='red'>Module 01 - Pre-flight</font>
 
-Configure SkyTap Lab:
-* Docker
-* Docker Compose
+SkyTap environment:
+* Docker & Docker Compose
 * Docker Registry
 * Jq & Yq
 * Helm
-
-* k3s
+* k3s - Rancher
 
 #### <font color='red'>Module 02 - Installation of Data Catalog 7.1.0</font>
 
@@ -22,10 +20,9 @@ Configure SkyTap Lab:
 
 #### <font color='red'>Module 03 - Workshop</font>
 
+* minIO - object storage (test data)
 * Configure Local Agent
 * Configure Virtual Folders
-
-
 
 <font color='teal'>For the latest updates execute the following script: ~/Scrpts ./clone_latest_workshop.sh </font>
 
