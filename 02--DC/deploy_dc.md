@@ -5,10 +5,10 @@ To download the Data Catalog images and Charts, you will need to contact your Ac
 * The artifacts are not publicly available.
 * To save time, the artifacts have already been downloaded.
 
-`create a dc namespace in k3s:`
+`create a ldc namespace in k3s:`
 
 ```
-kubectl create namespace dc
+kubectl create namespace ldc
 kubectl get namespace
 ```
 
@@ -34,7 +34,7 @@ Note: Be patient as the images have to be unpacked and then uploaded.
 `install Data Catalog:`
 ```
 cd Packages
-helm install dc ldc-7.1.0.tgz -f values.yml -n dc
+helm install ldc ldc-7.1.0.tgz -f values.yml -n ldc
 ```
 
 `check all Pods:`
