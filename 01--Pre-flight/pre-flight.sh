@@ -30,11 +30,20 @@ sleep 3s
 echo -e "Install Pre-requisites .."
 
 # Install Helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
 ./get_helm.sh
 sleep 2s
 echo -e "Helm installed .."
 sleep 2s
 echo -e "Pre-requisite installations completed .."
+
+# Install Jq
+
+
+# Install Yq
+# wget https://github.com/mikefarah/yq/releases/4.25.2/yq_linux_amd64.tar.gz -O - |\
+# tar xz && mv yq_linux_amd64 /usr/bin/yq
 
 # Docker pre-requisites
 sleep 3s
@@ -65,7 +74,6 @@ usermod -aG docker $USER
 systemctl restart docker
 sleep 3s
 echo -e "Docker installed .."
-
 
 # Install Latest Docker Compose
 sleep 3s
