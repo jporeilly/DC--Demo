@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# -------------------------------------------------------------------------------------
+# =============================================================
 # check Workshop-LDC directory exists
 # remove Workshop-LDC 
-# create Workshop-LDC/directory
-# clone remote git LDC--Installation repository to /installers/Workshop-LDC directory
-# copy files over to /etc/ansible/playbooks
-# tidy up directory..
+# create Workshop-LDC directory
+# clone remote git DC--Demo repository to Workshop-DC directory
+# copy files over to Scripts
+# 
 # dont forget to close and open VSC ..
-# 25/03/2022
-# -------------------------------------------------------------------------------------
+# 21/06/2022
+# =============================================================
 
 remoteHost=github.com
 remoteUser=jporeilly
