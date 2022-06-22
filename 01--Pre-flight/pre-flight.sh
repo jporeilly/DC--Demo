@@ -46,7 +46,7 @@ echo -e "Pre-requisite installations completed .."
 
 # Docker pre-requisites
 sleep 3s
-echo -e "Install Docker .."
+echo -e "Install Docker pre-requisites.."
 dnf remove -y docker \
                 docker-client \
                 docker-client-latest \
@@ -65,6 +65,8 @@ dnf makecache
 sleep 2s
 dnf list docker-ce
 sleep 5s
+
+#Install Docker
 yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 systemctl start docker
 systemctl enable docker
