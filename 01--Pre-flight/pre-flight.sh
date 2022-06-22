@@ -20,9 +20,6 @@ dnf install epel-release -y
 swapoff --all
 sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
 systemctl disable firewalld # Do not disable in Production.
-cp /etc/sysctl.conf /etc/sysctl.conf.bak # Elasticsearch requires a max map count > 262144
-chown -R $(id -u) /etc/sysctl.conf
-echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 sysctl -p --system
 echo -e "Infrastructure update completed .."
 
