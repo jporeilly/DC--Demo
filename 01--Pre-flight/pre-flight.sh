@@ -20,9 +20,6 @@ dnf install epel-release -y
 swapoff --all
 sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
 systemctl disable firewalld # Do not disable in Production.
-cp /etc/sysctl.conf /etc/sysctl.conf.bak # Elasticsearch requires a max map count > 262144
-chown -R $(id -u) /etc/sysctl.conf
-echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 sysctl -p --system
 echo -e "Infrastructure update completed .."
 
@@ -30,15 +27,26 @@ sleep 3s
 echo -e "Install Pre-requisites .."
 
 # Install Helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
 ./get_helm.sh
 sleep 2s
 echo -e "Helm installed .."
+
+# Install Jq
+dnf install jq
+
+# Install Yq
+# wget https://github.com/mikefarah/yq/archive/refs/tags/v4.25.2.tar.gz
+# chown -R dc v4.25.2.tar.gz
+# tar -xzvf v4.25.2.tar.gz 
+# mv yq-4.25.2 /usr/bin/yq
 sleep 2s
 echo -e "Pre-requisite installations completed .."
 
 # Docker pre-requisites
 sleep 3s
-echo -e "Install Docker .."
+echo -e "Install Docker pre-requisites.."
 dnf remove -y docker \
                 docker-client \
                 docker-client-latest \
@@ -57,6 +65,8 @@ dnf makecache
 sleep 2s
 dnf list docker-ce
 sleep 5s
+
+#Install Docker
 yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 systemctl start docker
 systemctl enable docker
@@ -65,7 +75,6 @@ usermod -aG docker $USER
 systemctl restart docker
 sleep 3s
 echo -e "Docker installed .."
-
 
 # Install Latest Docker Compose
 sleep 3s
