@@ -34,7 +34,7 @@ Note: Be patient as the images have to be unpacked and then uploaded.
 `install Data Catalog:`
 ```
 cd Packages
-helm install ldc ldc-7.1.0.tgz -f custom-values.yml -n ldc
+helm install --wait ldc ldc-7.1.0.tgz -f custom-values.yml -n ldc
 ```
 
 `check all Pods:`
