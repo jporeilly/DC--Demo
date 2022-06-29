@@ -2,16 +2,13 @@ keycloak:
   service:
     type: NodePort
     nodePort: 30880
+
 app-server:
   service:
     type: NodePort
     nodePort: 31080
   keycloak:
     authServerUrl: "http://data-catalog.skytap.example:30880/auth"
-
-global:
-  registry: data-catalog.skytap.example:5000
-
   ingress:
     enabled: true
     hosts:
@@ -32,6 +29,7 @@ minio-bundled:
   consoleService:
     type: NodePort
     nodePort: 30901
+
 mongodb:
   service:
     type: NodePort
@@ -45,4 +43,7 @@ mongodb:
 
 agent:
   initJDBC:
-    enabled: true        
+    enabled: true  
+
+global:
+  registry: data-catalog.skytap.example:5000         
