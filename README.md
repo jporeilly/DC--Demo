@@ -15,7 +15,7 @@ SkyTap environment:
 
 * Create ldc namespace
 * Configure values.yml
-* Upload images & Charts
+* Upload images & charts
 * Install DC 7.1.0
 
 #### <font color='red'>Module 03 - Workshop</font>
@@ -30,7 +30,7 @@ SkyTap environment:
 
 | Artifact                   | Date     |  
 | ---------------------------| ---------| 
-| Released                   | 01/07/22 |               
+| Released                   | 15/07/22 |               
 |
  
 
