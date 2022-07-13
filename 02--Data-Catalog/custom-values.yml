@@ -18,7 +18,7 @@ app-server:
 
 ## Update: Commented out for version 7.1.0.  A post-installation Pod configures minIO. 
 # minio-bundled:
-#  buckets: [{"name": "ldc", "policy": "none"}, {"ldc-demo-data", "policy": "none"}, {"name": "flight-delay-data", "policy": "none"}, {"name": "spark-history", "policy": "none"}, {"name": "ldc-discovery-cache/ext/jdbc", "policy": "none"}]
+#  buckets: [{"name": "ldc", "policy": "none"}, {"ldc-demo-data", "policy": "none"}, {"name": "flight-delay-data", "policy": "none"}, {"name": "spark-history", "policy": "none"}, {"name": "ldc-discovery-cache", "policy": "none"}]
 #  accessKey: minioadmin
 #  secretKey: minioadmin
 #  persistence:
