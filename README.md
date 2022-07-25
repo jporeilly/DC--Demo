@@ -1,4 +1,4 @@
-### <font color='red'>Installation & Configuration</font>  
+### <font color='red'>Deploying Data Catalog 7.1.0</font>  
 
 The following workshop is intended to highlight an on-premise bare-metal installation and configuration of DC 7.1.0 The installation and configuration steps have been modified for a training environment and therefore are <font color='red'>NOT</font> to be used for a production environment.
 
@@ -11,7 +11,7 @@ SkyTap environment:
 * Helm
 * k3s - Rancher
 
-#### <font color='red'>Module 02 - Installation of Data Catalog 7.1.0</font>
+#### <font color='red'>Module 02 - Deploying Data Catalog 7.1.0</font>
 
 * Create ldc namespace
 * Configure values.yml
