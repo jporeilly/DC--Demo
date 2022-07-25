@@ -107,7 +107,8 @@ sudo nano daemon.json
 ```
 sudo usermod -aG docker $USER
 ```
-or just for the `dc` user. Doesn't require a reboot.
+or just for the `dc` user. 
+Doesn't require a reboot. NOT persistent.
 ```
   sudo setfacl --modify user:dc:rw /var/run/docker.sock
 ```
