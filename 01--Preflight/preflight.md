@@ -91,16 +91,6 @@ Docker client always attempts to connect to registries by first using HTTPS. You
 
 Resolution: 
 * Ensure the /etc/docker/daemon.json has the IP or FQDN. 
-* Run the following command:
-  ```sudo setfacl --modify user:dc:rw /var/run/docker.sock```
-
-``login into the Registry:``
-```
-docker login data-catalog.skytap.example:5000
-Username: admin
-Password: password  
-```
-
 ```
 cd /etc/docker
 sudo nano daemon.json
@@ -113,11 +103,22 @@ sudo nano daemon.json
 }
 ```
 
-* finally test that the Docker Regsitry is up and running
+* Run the following command:
+```
+sudo usermod -aG docker $USER
+```
+or just for the `dc` user. Doesn't require a reboot.
+```
+  sudo setfacl --modify user:dc:rw /var/run/docker.sock
+```
 
-  > navigate to: https://data-catalog.skytap.example:8080
 
-
+``login into the Registry:``
+```
+docker login data-catalog.skytap.example:5000
+Username: admin
+Password: password  
+```
 ``check certs:``
 ```
 openssl s_client -showcerts -connect data-catalog.skytap.example:5000
