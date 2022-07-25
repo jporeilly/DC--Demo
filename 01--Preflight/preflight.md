@@ -46,7 +46,7 @@ sudo mkdir certs
 
 ``create certs:``
 ```
-sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout Docker-Registry/certs/registry.key -x509 -days 365 -out Docker-Registry/certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:data-catalog.skytap.example"
+sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout ~/Docker-Registry/certs/registry.key -x509 -days 365 -out ~/Docker-Registry/certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:data-catalog.skytap.example"
 ```
 
 ``copy certs to Node:``
