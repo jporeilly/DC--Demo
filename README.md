@@ -30,7 +30,5 @@ SkyTap environment:
 
 | Artifact                   | Date     |  
 | ---------------------------| ---------| 
-| Released                   | 15/07/22 |               
+| Released                   | 30/07/22 |               
 |
- 
-
