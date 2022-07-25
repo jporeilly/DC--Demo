@@ -35,23 +35,24 @@ The container registry configuration file will need to be modified to allow the 
 
 ``create a Docker_Registry:``
 ```
-sudo mkdir Docker-Registry
+mkdir Docker-Registry
 ```
 
 ``create certs directory:``
 ```
 cd Docker-Registry
-sudo mkdir certs
+mkdir certs
+mkdir data
 ```
 
 ``create certs:``
 ```
-sudo openssl req -newkey rsa:4096 -nodes -sha256 -keyout ~/Docker-Registry/certs/registry.key -x509 -days 365 -out ~/Docker-Registry/certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:data-catalog.skytap.example"
+openssl req -newkey rsa:4096 -nodes -sha256 -keyout ~/Docker-Registry/certs/registry.key -x509 -days 365 -out ~/Docker-Registry/certs/registry.crt -subj "/CN=dockerhost" -addext "subjectAltName=DNS:data-catalog.skytap.example"
 ```
 
 ``copy certs to Node:``
 ```
-cd Docker-Registry/certs
+cd certs
 sudo cp registry.* /etc/pki/tls/certs
 sudo update-ca-trust extract
 ```
@@ -86,11 +87,12 @@ Note: check that the container is up and running -Visual Studio Code
 
 Docker client always attempts to connect to registries by first using HTTPS. You must configure your Docker client so that it can connect to insecure registries. In your Docker client is not configured for insecure registries, you will see the following error when you attempt to pull or push images to the Registry:  
 
-``Error response from daemon: Get https://data-catlog.skytap.example/v2/users/: dial tcp myregistrydomain.com:443 getsockopt: connection refused.``
+``Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1&filters=%7B%22label%22%3A%7B%22com.docker.compose.project%3Ddocker-registry%22%3Atrue%7D%7D&limit=0": dial unix /var/run/docker.sock: connect: permission denied.``
 
 Resolution: 
 * Ensure the /etc/docker/daemon.json has the IP or FQDN. 
-* Ensure all the containers have started. Check containers in Docker section of VSC.
+* Run the following command:
+  ```sudo setfacl --modify user:dc:rw /var/run/docker.sock```
 
 ``login into the Registry:``
 ```
