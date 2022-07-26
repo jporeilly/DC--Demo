@@ -1,8 +1,8 @@
 ### <font color='red'>Preflight - Hardware & Utils</font>  
 
-The following pre-requisites configure Data Catalog 7.1.0
+The following pre-requisites configure Data Catalog 7.1.1
 
-Prerequisites for the DC 7.1.0 server:
+Prerequisites for the DC 7.1.1 server:
 * Docker
 * Docker Compose
 * Docker Registry + UI 
@@ -15,7 +15,7 @@ Prerequisites for the DC 7.1.0 server:
 
 <em>Install Docker / Docker Compose</em>
 
-The following script prepares an Alma (RHEL) 8 server for DC 7.1.0 
+The following script prepares an Alma (RHEL) 8 server for DC 7.1.1 
 Docker Registry is installed with a HTTP connection (insecure).
 
 ``run the script:``
